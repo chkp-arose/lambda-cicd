@@ -38,8 +38,12 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(System.DefaultWorkingDirectory)/cloudguard_output'
+      targetPath: '$(System.DefaultWorkingDirectory)/*'
       artifact: 'cloudguard_output'
       publishLocation: 'pipeline'
     displayName: 'Publishing Artifacts'
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      buildType: 'current'
+      targetPath: '$(Pipeline.Workspace)'
   
