@@ -30,10 +30,10 @@ jobs:
   - task: AWSShellScript@1
     inputs:
         awsCredentials: 'aws-arose-chkp'
-        regionName: $(AWS_REGION)
+        regionName: 'us-east-1'
         scriptType: 'inline'
         inlineScript: |
-          ./node-modules/.bin/serverless package -t $(CGIDCGSECRET)
+          sls package -t $(CGIDCGSECRET)
     displayName: 'Run Serverless package'
 
   - task: PublishPipelineArtifact@1
